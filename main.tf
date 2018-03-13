@@ -74,7 +74,7 @@ POLICY
 # Deployment access
 resource "aws_iam_policy" "site_deploy" {
   description = "Deployment access for ${var.name} in domain ${var.domain}"
-  path        = "/${var.name}/${var.domain}"
+  path        = "${var.policy_path}"
 
   policy = <<POLICY
 {
@@ -104,7 +104,7 @@ POLICY
 # Log reader access
 resource "aws_iam_policy" "log_reader" {
   description = "Log access for ${var.name} in domain ${var.domain}"
-  path        = "/${var.name}/${var.domain}"
+  path        = "${var.policy_path}"
 
   policy = <<POLICY
 {
@@ -190,7 +190,7 @@ resource "aws_cloudfront_distribution" "site" {
   }
 
   tags {
-    SiteName    = "${var.name}"
+    Name        = "${var.name}"
     Domain      = "${var.domain}"
     Environment = "${var.env}"
   }
