@@ -33,6 +33,12 @@ variable "env" {
   description = "Environment the site is used in"
 }
 
+variable "policy_path" {
+  type        = "string"
+  description = "Path for all the policies"
+  default     = "/"
+}
+
 variable "site_expiration_enabled" {
   description = "Enable expiration for the site files."
   default     = false
