@@ -73,6 +73,7 @@ POLICY
 
 # Deployment access
 resource "aws_iam_policy" "site_deploy" {
+  name        = "deploy-${var.name}-${var.domain}"
   description = "Deployment access for ${var.name} in domain ${var.domain}"
   path        = "${var.policy_path}"
 
@@ -103,6 +104,7 @@ POLICY
 
 # Log reader access
 resource "aws_iam_policy" "log_reader" {
+  name        = "logs-${var.name}-${var.domain}"
   description = "Log access for ${var.name} in domain ${var.domain}"
   path        = "${var.policy_path}"
 
