@@ -73,7 +73,8 @@ POLICY
 
 # Deployment access
 resource "aws_iam_policy" "site_deploy" {
-  description = "Deployment access for ${var.name}"
+  description = "Deployment access for ${var.name} in domain ${var.domain}"
+  path        = "/${var.name}/${var.domain}"
 
   policy = <<POLICY
 {
@@ -102,7 +103,8 @@ POLICY
 
 # Log reader access
 resource "aws_iam_policy" "log_reader" {
-  description = "Log access for ${var.name}"
+  description = "Log access for ${var.name} in domain ${var.domain}"
+  path        = "/${var.name}/${var.domain}"
 
   policy = <<POLICY
 {
@@ -130,7 +132,7 @@ locals {
 
 # CloudFront distribution for the website
 resource "aws_cloudfront_distribution" "site" {
-  comment = "CDN for ${var.name}"
+  comment = "CDN for ${var.name} in domain ${var.domain}"
   enabled = true
 
   aliases = "${concat(list(var.domain), local.fully_qualified_subdomains)}"
