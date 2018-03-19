@@ -8,12 +8,12 @@ output "logs_bucket" {
   value       = "${aws_s3_bucket.logs.id}"
 }
 
-output "site_deploy_policy_id" {
-  description = "Policy ID for deploying the website"
-  value       = "${aws_iam_policy.site_deploy.id}"
+output "site_deploy_policy" {
+  description = "Policy ARN for deploying the website"
+  value       = "${aws_iam_policy.site_deploy.arn}"
 }
 
-output "log_reader_policy_id" {
-  description = "Policy ID for reading logs"
-  value       = "${aws_iam_policy.log_reader.id}"
+output "log_reader_policy" {
+  description = "Policy ARN for reading logs"
+  value       = "${aws_iam_policy.log_reader.arn}"
 }
